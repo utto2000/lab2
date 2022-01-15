@@ -1,0 +1,38 @@
+﻿@model lab2.Models.FormModel
+@{
+    ViewData["Title"] = "Form1";
+}
+
+<div class="text-left">
+    <h1 class="display-4">Dane z formularza</h1>
+
+    @Html.DisplayNameFor(model => model.Name):          @Html.DisplayFor(model => model.Name)
+    <br />
+    @Html.DisplayNameFor(model => model.date_of_birth):   @Html.DisplayFor(model => model.date_of_birth)
+    
+</div>
+
+@{
+    void count_days()
+    { 
+        var days = (DateTime.Now - Model.date_of_birth).Days;
+        <p>Days from birthday:@days  </p>
+    }   
+
+    void leap_year()
+    {
+        var year = Model.date_of_birth.Year;
+        if(year % 4 == 0  || year % 100 == 0)
+        {
+            <p>Year of birth was leap year</p>
+        }
+        else{
+            <p>Year of birth wasnt leap year</p>
+            }
+    }
+
+    count_days();
+    leap_year();
+}
+
+
